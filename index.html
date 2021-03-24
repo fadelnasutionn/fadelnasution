@@ -33,7 +33,7 @@
 
         <!-- Navbar Link -->
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul id="myDIV" class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#header">About Me</a>
             </li>
@@ -644,6 +644,27 @@
           })
           .catch((error) => console.error("Error!", error.message));
       });
+    </script>
+
+    <!-- Javascript Navbar -->
+    <script>
+      var w = document.documentElement.clientWidth || window.innerWidth;
+      if (w >= 992) {
+        var header = document.getElementById("myDIV");
+        var btns = header.getElementsByClassName("nav-link");
+
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+          });
+        }
+      } else {
+        if ($(".nav-item a").hasClass("active")) {
+          $(".nav-item a").removeClass("active");
+        }
+      }
     </script>
 
     <!-- Javascript -->
